@@ -7,7 +7,7 @@ Have your PAAS running on localhost with a single command.
 
 ## Use
 
-    sudo localdev -rules "myserver.dev=5000, api.myserver.dev=5001, *.customerapps.dev=5002"
+    sudo localdev --rules "myserver.dev=5000, api.myserver.dev=5001, *.customerapps.dev=5002"
 
 By default localdev maps the `dev` TLD to `127.0.0.1`. In the above example, three servers are running on localhost: a webserver on port 5000, an api server on 5001 and a proxy for customer apps on port 5002. The command allows testing all these servers on localhost using the .dev TLD.
 
