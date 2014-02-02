@@ -5,6 +5,16 @@ A single command line tool that maps development domains (like *.myserver.dev) t
 
 Have your PAAS running on localhost with a single command.
 
+## Installation
+
+For non python developers, using a mac:
+
+    sudo easy_install localdev
+
+For python people:
+
+    pip install localdev
+
 ## Use
 
     sudo localdev --rules "myserver.dev=5000, api.myserver.dev=5001, *.customerapps.dev=5002"
