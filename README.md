@@ -4,7 +4,8 @@ localdev
 A single command line tool that maps development domains (like *.myserver.dev) to a set of servers running on localhost. This tool was built to dramatically reduce the pain of setting up multi-domain local development. It takes the place of a DNS server like Bind or dnsmasq, and a webserver like Apache or Nginx. 
 
 **Stop fussing with /etc/hosts and configuration files.**<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Put your servers on localhost with a single command.**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**Put your servers on localhost with a single command.**
 
 ## Installation
 
