@@ -75,7 +75,7 @@ def run(port, routes, sslport=None, tld='dev', ip='127.0.0.1', verbose=False):
     quickproxy.run_proxy(port=port,
                          methods=all_methods, 
                          req_callback=req_callback,
-                         debug_level=4 if verbose else 0,
+                         debug_level=1 if verbose else 0,
                          start_ioloop=False)
 
     if sslport:
@@ -84,7 +84,7 @@ def run(port, routes, sslport=None, tld='dev', ip='127.0.0.1', verbose=False):
                              test_ssl=True,
                              methods=all_methods, 
                              req_callback=ssl_callback,
-                             debug_level=4 if verbose else 0,
+                             debug_level=1 if verbose else 0,
                              start_ioloop=False)
 
     try:
