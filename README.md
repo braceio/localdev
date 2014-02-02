@@ -9,7 +9,7 @@ A single command line tool that maps development domains (like *.myserver.dev) t
 
 By default localdev maps the `dev` TLD to `127.0.0.1`. In the above example, three servers are running on localhost: a webserver on port 5000, an api server on 5001 and a proxy for customer apps on port 5002. The command allows testing all these servers on localhost using the .dev TLD.
 
-You need to run it as root because it uses port 53, the standard DNS port. Also you'll want to add localhost (127.0.0.1) to the top of your DNS server list. I recommend adding google's DNS addresses (8.8.8.8 and 8.8.4.4) as backup servers.
+You need to run it as root because it uses ports 53, 80 and optionally 443 for handling DNS and HTTP traffic. Also you'll want to add localhost (127.0.0.1) to the top of your DNS server list. I recommend adding google's DNS addresses (8.8.8.8 and 8.8.4.4) as backup servers.
 
 ![](http://raw.github.com/colevscode/devdns/master/dnsconfig.png)
 
