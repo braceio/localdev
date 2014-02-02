@@ -58,11 +58,11 @@ def make_callbacks(routes):
     return req_callback, ssl_callback
 
 
-def run(port, routes, sslport=None, tld='dev', ip='127.0.0.1', verbose=False):
+def run(port, routes, sslport=None, dnsport=53, tld='dev', ip='127.0.0.1', verbose=False):
 
     req_callback, ssl_callback = make_callbacks(routes)
 
-    dnsc = devdns.connect()
+    dnsc = devdns.connect(port=dnsport)
     print 'devDNS :: *.%s. 60 IN A %s' % (tld, ip)
 
     mainloop = ioloop.IOLoop.instance()

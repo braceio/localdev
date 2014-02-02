@@ -23,9 +23,6 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--port', type=int, default=80, 
         help="The port. (default 80)")
 
-    parser.add_argument('-S', '--sslport', type=int, default=None, 
-        help="If set, will enable SSL testing on specified port.")
-
     parser.add_argument('-t', '--tld', default='dev', 
         help="The TLD used for local development. Default: 'dev'.")
 
@@ -33,11 +30,18 @@ if __name__ == '__main__':
         help="The IP to which local domains will be routed. Default: \n"+\
              "'127.0.0.1'.")
 
+    parser.add_argument('-S', '--sslport', type=int, default=None, 
+        help="If set, will enable SSL testing on specified port.")
+
+    parser.add_argument('-D', '--dnsport', type=int, default=53, 
+        help="The port for DNS. (default 53)")
+
     parser.add_argument('-v', '--verbose', action='store_const', const=True, 
         default=False, help="Print debug info to console.")
 
     parser.add_argument('-w', '--watch', action='store_const', const=True, 
-        default=False, help="Watch config file for changes.")
+        default=False, help="Watch config file for changes. (requires \n"+\
+            "watchdog to be installed)")
 
     args = parser.parse_args()
 
@@ -51,6 +55,7 @@ if __name__ == '__main__':
 
     localdev.run(args.port, routes,
 		         sslport=args.sslport, 
+                 dnsport=args.dnsport,
         		 tld=args.tld, 
     		     ip=args.ip,
    		         verbose=args.verbose)
