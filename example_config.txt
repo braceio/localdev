@@ -1,0 +1,2 @@
+myservice.dev 5000
+*.myservice.dev 5001

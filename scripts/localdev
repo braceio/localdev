@@ -1,0 +1,57 @@
+#!/usr/bin/env python
+
+import argparse
+import localdev
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawTextHelpFormatter,
+        description="Turn-key DNS server and proxy for multi-domain development.")
+
+    parser.add_argument('-f', '--config', 
+        help="The config file where alias records are stored. Format of\n"+\
+             "the file is each line contains a source followed by a\n"+\
+             "destination. ex:\n\nmyserver.dev 5000\n*.myserver.dev 5001\n\n")
+
+    parser.add_argument('-r', '--rules',
+        help="Comma separated list of SOURCE=DEST pairs where SOURCE is a\n"+\
+             "domain with optional wildcards, and DEST is a port. Wildcards\n"+\
+             "must be escaped if used on the command line. ex:\n\n"+\
+             "localdev -r myserver.dev=5000,*.myserver.dev=5001\n\n")
+
+    parser.add_argument('-p', '--port', type=int, default=80, 
+        help="The port. (default 80)")
+
+    parser.add_argument('-S', '--sslport', type=int, default=None, 
+        help="If set, will enable SSL testing on specified port.")
+
+    parser.add_argument('-t', '--tld', default='dev', 
+        help="The TLD used for local development. Default: 'dev'.")
+
+    parser.add_argument('-i', '--ip', default='127.0.0.1', 
+        help="The IP to which local domains will be routed. Default: \n"+\
+             "'127.0.0.1'.")
+
+    parser.add_argument('-v', '--verbose', action='store_const', const=True, 
+        default=False, help="Print debug info to console.")
+
+    parser.add_argument('-w', '--watch', action='store_const', const=True, 
+        default=False, help="Watch config file for changes.")
+
+    args = parser.parse_args()
+
+    if args.config:
+        routes = localdev.configure(filename=args.config, watch=args.watch)
+    elif args.rules:
+        config = [rule.strip().split('=') for rule in args.rules.split(',')]
+        routes = localdev.configure(routes=config)
+    else:
+        routes = []
+
+    localdev.run(args.port, routes,
+		         sslport=args.sslport, 
+        		 tld=args.tld, 
+    		     ip=args.ip,
+   		         verbose=args.verbose)
+
