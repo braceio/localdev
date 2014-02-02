@@ -1,7 +1,9 @@
 localdev
 ==========
 
-A single command line tool that maps development domains (like *.myserver.dev) to a set of servers running on localhost. For local development, this tool takes the place of a DNS server like bind or dnsmasq, and a webserver like Apache or Nginx. Have your PAAS running on localhost with a single command.
+A single command line tool that maps development domains (like *.myserver.dev) to a set of servers running on localhost. This tool was built to dramatically reduce the pain of setting up multi-domain local development. It takes the place of a DNS server like Bind or dnsmasq, and a webserver like Apache or Nginx. 
+
+Have your PAAS running on localhost with a single command.
 
 ## Use
 
