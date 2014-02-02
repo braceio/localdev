@@ -4,7 +4,7 @@ localdev
 A command line tool that maps development domains (like *.myserver.dev) to a 
 set of servers running on localhost. This tool was built to dramatically reduce 
 the pain of setting up multi-domain local development. It takes the place of a 
-DNS server like Bind or dnsmasq, and a webserver like Apache or Nginx. 
+DNS server like Bind or dnsmasq, and a reverse proxy like Apache or Nginx. 
 
 With localdev you can stop fussing with /etc/hosts and configuration files. 
 Instead, hook-up your development servers with a single command.
@@ -14,7 +14,7 @@ Instead, hook-up your development servers with a single command.
     sudo localdev --rules "niftythings.dev=5000, api.niftythings.dev=5001, *.niftythings.dev=5002"
 
 In the above example, three servers are running on localhost: a webserver on 
-port 5000, an api server on 5001 and a server hosting customer apps on port 5002. 
+port 5000, an api server on 5001 and a server hosting customer content on port 5002. 
 Localdev routes web requests to the three servers by matching the hostname of 
 each request to a rule, and proxying the request to the corresponding port.
 
