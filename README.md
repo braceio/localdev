@@ -14,8 +14,9 @@ Instead, hook-up your development servers with a single command.
     sudo localdev --rules "niftythings.dev=5000, api.niftythings.dev=5001, *.niftythings.dev=5002"
 
 In the above example, three servers are running on localhost: a webserver on 
-port 5000, an api server on 5001 and a proxy for customer apps on port 5002. 
-Localdev routes web requests to the three servers using the specified domains.
+port 5000, an api server on 5001 and a server hosting customer apps on port 5002. 
+Localdev routes web requests to the three servers by matching the hostname of 
+each request to a rule, and proxying the request to the corresponding port.
 
 Sudo is required if you use the default ports 53, 80 or 443 for handling DNS, 
 HTTP or SSL traffic. 
@@ -43,7 +44,7 @@ within a single process.
 
 When launched, localdev starts two services: a local DNS server that maps a TLD 
 (like .dev) to localhost, and a reverse proxy that routes HTTP requests to your 
-servers. 
+servers based on the configuration rules.
 
 The DNS is a lightweight server based on [devdns](https://github.com/colevscode/devdns). 
 The reverse proxy is based on [quickproxy](https://github.com/colevscode/quickproxy), 
@@ -59,17 +60,16 @@ which is itself built on [Tornado](http://http://www.tornadoweb.org/).
     optional arguments:
       -h, --help            show this help message and exit
       -f CONFIG, --config CONFIG
-                            The config file where alias records are stored. Format of
+                            The config file where proxy rules are stored. Format of
                             the file is each line contains a source followed by a
-                            destination. ex:
+                            destination port. ex:
                             
                             myserver.dev 5000
                             *.myserver.dev 5001
                             
       -r RULES, --rules RULES
                             Comma separated list of SOURCE=DEST pairs where SOURCE is a
-                            domain with optional wildcards, and DEST is a port. Wildcards
-                            must be escaped if used on the command line. ex:
+                            domain with optional wildcards, and DEST is a port. ex:
                             
                             localdev -r myserver.dev=5000,*.myserver.dev=5001
                             

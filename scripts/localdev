@@ -10,14 +10,13 @@ if __name__ == '__main__':
         description="Turn-key DNS server and proxy for multi-domain development.")
 
     parser.add_argument('-f', '--config', 
-        help="The config file where alias records are stored. Format of\n"+\
+        help="The config file where proxy rules are stored. Format of\n"+\
              "the file is each line contains a source followed by a\n"+\
-             "destination. ex:\n\nmyserver.dev 5000\n*.myserver.dev 5001\n\n")
+             "destination port. ex:\n\nmyserver.dev 5000\n*.myserver.dev 5001\n\n")
 
     parser.add_argument('-r', '--rules',
         help="Comma separated list of SOURCE=DEST pairs where SOURCE is a\n"+\
-             "domain with optional wildcards, and DEST is a port. Wildcards\n"+\
-             "must be escaped if used on the command line. ex:\n\n"+\
+             "domain with optional wildcards, and DEST is a port. ex:\n\n"+\
              "localdev -r myserver.dev=5000,*.myserver.dev=5001\n\n")
 
     parser.add_argument('-p', '--port', type=int, default=80, 
