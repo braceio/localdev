@@ -38,6 +38,15 @@ When launched, localdev starts two services: a local DNS server that maps a TLD
 (like .dev) to localhost, and a reverse proxy that routes HTTP requests to your 
 servers based on the configuration rules.
 
+Here's a little anecdote to clarify the process:
+
+> When you type "mysite.dev" into your browser, first your browser issues a 
+> DNS query to your primary DNS server. If installed correctly, localdev says 
+> "Yo, that server is on localhost". Then your browser is like, "word" and sends 
+> an HTTP request to localhost port 80. Then localdev slides over and says 
+> "Surprise! Me again.", and proxies the HTTP request to the destination server
+> according to the rules you defined. "Whatever," says your browser.
+
 The DNS is a lightweight server based on [devdns](https://github.com/colevscode/devdns). 
 The reverse proxy is based on [quickproxy](https://github.com/colevscode/quickproxy), 
 which is itself built on [Tornado](http://http://www.tornadoweb.org/).
