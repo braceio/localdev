@@ -47,6 +47,8 @@ def make_callbacks(routes):
         else:
             req.host, req.port = host, port
 
+        # todo: deal with chunked transfer encoding headers
+
         return req
 
     def ssl_callback(req):

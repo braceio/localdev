@@ -12,11 +12,13 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--config', 
         help="The config file where proxy rules are stored. Format of\n"+\
              "the file is each line contains a source followed by a\n"+\
-             "destination port. ex:\n\nmyserver.dev 5000\n*.myserver.dev 5001\n\n")
+             "destination host:port. (localhost is the default destination \n"+\
+             "host) ex:\n\nmyserver.dev 5000\n*.myserver.dev 5001\n\n")
 
     parser.add_argument('-r', '--rules',
         help="Comma separated list of SOURCE=DEST pairs where SOURCE is a\n"+\
-             "domain with optional wildcards, and DEST is a port. ex:\n\n"+\
+             "domain with optional wildcards, and DEST is a host:port. \n"+\
+             "(localhost is the default destination host) ex:\n\n"+\
              "localdev -r myserver.dev=5000,*.myserver.dev=5001\n\n")
 
     parser.add_argument('-p', '--port', type=int, default=80, 
