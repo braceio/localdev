@@ -76,7 +76,9 @@ first try:
 
 - Use `dig` to see if localdev correctly resolves your domain name to 127.0.0.1
       
+
       dig mycoolsite.dev
+
 
   You should see something like:
 
@@ -120,10 +122,10 @@ first try:
 
   - `curl: (52) Empty reply from server`
 
-    See the discussion below about previous installations.
+    See the discussion below about previous installations below.
 
-- If you previously configured your mac with Bind or dnsmasq, you'll have to 
-  disable those services. 
+- If you previously installed Bind or dnsmasq, you may have to disable those 
+  services. 
 
   Unload bind:
 
@@ -136,8 +138,8 @@ first try:
 
       localdev -r mysite.dev=5000 -p 8080
 
-  Generally, check your firewall settings to ensure that HTTP traffic can get 
-  to localdev.
+  Generally, check your firewall settings to ensure that HTTP traffic can reach 
+  localdev.
 
 ## Usage Reference <a name="ref"></a>
 
