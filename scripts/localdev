@@ -55,9 +55,9 @@ if __name__ == '__main__':
         routes = []
 
     localdev.run(args.port, routes,
-		         sslport=args.sslport, 
+                 sslport=args.sslport, 
                  dnsport=args.dnsport,
-        		 tld=args.tld, 
-    		     ip=args.ip,
-   		         verbose=args.verbose)
+                 tld=args.tld, 
+                 ip=args.ip,
+                 verbose=args.verbose)
 

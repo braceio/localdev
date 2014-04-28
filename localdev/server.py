@@ -34,12 +34,15 @@ def make_callbacks(routes):
         host = ''
         port = None
 
+        # req.headers['Host']=req.host
+
         for src, dst in routes:
             if src[0] and fnmatch.fnmatch(req.host, src[0]):
                 if src[1] and req.port != src[1]:
                     continue
-                host = dst[0] or req.host
+                host = dst[0] or '127.0.0.1'
                 port = dst[1] or 80 
+                break
 
         if not host:
             body = 'No route for %s:%d' % (req.host, req.port)
@@ -50,6 +53,7 @@ def make_callbacks(routes):
         # todo: deal with chunked transfer encoding headers
 
         return req
+
 
     def ssl_callback(req):
         req.port = 80
